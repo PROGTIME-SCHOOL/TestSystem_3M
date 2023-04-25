@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TestSystem_3M.Data;
+using TestSystem_3M.Services;
 
 namespace TestSystem_3M
 {
@@ -20,9 +22,37 @@ namespace TestSystem_3M
     /// </summary>
     public partial class MainWindow : Window
     {
+        TestSystemService service = new TestSystemService();
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void ButtonStart_Click(object sender, RoutedEventArgs e)
+        {
+            var questions = DataAccessLayer.GetQuestions();
+            service.SetQuestions(questions);
+
+            txtQuestion.Text = service.CurrentQuestionContent;
+        }
+
+        private void ButtonAnswer_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+
+            if(service.CheckAnswer(button.Content.ToString()))
+            {
+                lblInfo.Content = service.Score;
+                txtQuestion.Text = service.CurrentQuestionContent;
+            }
+            else
+            {
+                MessageBox.Show("END!");
+                btnYes.IsEnabled = false;
+                btnNo.IsEnabled = false;
+            }
+            
         }
     }
 }

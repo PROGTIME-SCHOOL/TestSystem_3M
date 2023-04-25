@@ -17,18 +17,26 @@
             <Button Width="100" Margin="15" Content="Results"/>
             <ComboBox Width="100" Margin="15"/>
             <Button Width="100" Margin="15" Content="START" Background="Orange" 
-                    Foreground="White"/>
+                    Foreground="White" Click="ButtonStart_Click"/>
         </StackPanel>
 
         <StackPanel Grid.Row="1">
-            <TextBlock Text="QUESTION" HorizontalAlignment="Center"
+            <TextBlock Name="txtQuestion" Text="QUESTION" HorizontalAlignment="Center"
                        Margin="0 50 0 0" FontSize="30"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Width="100" Height="100" Margin="0 60 20 0" Content="YES"
-                        FontSize="20" Background="Green" Foreground="White"/>
-                <Button Width="100" Height="100" Margin="20 60 0 0" Content="NO"
-                        FontSize="20" Background="OrangeRed" Foreground="White"/>
+                <Button Name="btnYes" Width="100" Height="100" Margin="0 60 20 0" Content="YES"
+                        FontSize="20" Background="Green" Foreground="White"
+                        Click="ButtonAnswer_Click"/>
+                
+                
+                <Button Name="btnNo" Width="100" Height="100" Margin="20 60 0 0" Content="NO"
+                        FontSize="20" Background="OrangeRed" Foreground="White"
+                        Click="ButtonAnswer_Click"/>
             </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Bottom">
+            <Label Name="lblInfo" Content="Information" Margin="15"/>
         </StackPanel>
     </Grid>
 </Window>
