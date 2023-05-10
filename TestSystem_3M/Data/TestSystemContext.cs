@@ -12,6 +12,8 @@ namespace TestSystem_3M.Data
     {
         // tables
         public DbSet<Question> Question { get; set; }
+        public DbSet<Result> Result { get; set; }
+        public DbSet<User> User { get; set; }
 
         // cofig
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

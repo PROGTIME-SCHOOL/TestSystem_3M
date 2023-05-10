@@ -1,0 +1,44 @@
+﻿<Window x:Class="TestSystem_3M.RegisterWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TestSystem_3M"
+        mc:Ignorable="d"
+        Title="RegisterWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel HorizontalAlignment="Center">
+            <Label Content="Sign In" HorizontalAlignment="Center" FontSize="20"/>
+
+            <Label Content="Login:"/>
+            <TextBox x:Name="txtLogin" Width="100" HorizontalAlignment="Right"/>
+
+            <Label Content="Passord:"/>
+            <TextBox x:Name="txtPassword" Width="100" HorizontalAlignment="Right"/>
+
+            <Button Margin="0 15 0 0" Content="SIGN IN" Background="Orange" Click="SignInButton_Click"/>
+
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" HorizontalAlignment="Center">
+            <Label Content="Sign Up" HorizontalAlignment="Center" FontSize="20"/>
+
+            <Label Content="Login:"/>
+            <TextBox x:Name="txtLoginReg" Width="100" HorizontalAlignment="Right"/>
+
+            <Label Content="Passord:"/>
+            <TextBox x:Name="txtPasswordReg" Width="100" HorizontalAlignment="Right"/>
+
+            <Label Content="Repeat Password:"/>
+            <TextBox x:Name="txtRepeatPasswordReg" Width="100" HorizontalAlignment="Right"/>
+
+            <Button Margin="0 15 0 0" Content="SIGN IN" Background="LightGreen" Click="SignUpButton_Click"/>
+
+        </StackPanel>
+    </Grid>
+</Window>
