@@ -14,7 +14,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Horizontal">
-            <Button Width="100" Margin="15" Content="Results"/>
+            <Button Width="100" Margin="15" Content="Results" Click="ResultButton_Click"/>
             <ComboBox Width="100" Margin="15"/>
             <Button Width="100" Margin="15" Content="START" Background="Orange" 
                     Foreground="White" Click="ButtonStart_Click"/>

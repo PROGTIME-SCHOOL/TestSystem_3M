@@ -24,17 +24,27 @@ namespace TestSystem_3M
     {
         TestSystemService service = new TestSystemService();
 
+        private DateTime startTime;
+        private DateTime endTime;
+
         public MainWindow()
         {
             InitializeComponent();
+            RegisterWindow registerWindow = new RegisterWindow(service, this);
+            registerWindow.Show();
+            this.Visibility = Visibility.Hidden;
+        }
+
+        public void LoadProgram()
+        {
+            lblInfo.Content = $"Name: {service.User.Login} Id: {service.User.Id}";
         }
 
         private void ButtonStart_Click(object sender, RoutedEventArgs e)
         {
-            var questions = DataAccessLayer.GetQuestions();
-            service.SetQuestions(questions);
-
             txtQuestion.Text = service.CurrentQuestionContent;
+
+            startTime = DateTime.Now;
         }
 
         private void ButtonAnswer_Click(object sender, RoutedEventArgs e)
@@ -52,7 +62,20 @@ namespace TestSystem_3M
                 btnYes.IsEnabled = false;
                 btnNo.IsEnabled = false;
             }
-            
+
+            service.Result.NumCurrentQuestion++;
+
+            if (service.Result.NumCurrentQuestion == service.QuestionCount)
+            {
+                endTime = DateTime.Now;
+                service.SaveResultToDb(startTime, endTime);
+            }
+        }
+
+        private void ResultButton_Click(object sender, RoutedEventArgs e)
+        {
+            ResultWindow resultWindow = new ResultWindow(service);
+            resultWindow.Show();
         }
     }
 }
